@@ -1,13 +1,13 @@
 import { Button } from "@chakra-ui/react";
 import React from "react";
 
-const ButtonForm = ({ loading, isDirty, children }, ref) => {
+const ButtonForm = ({ loading, loadingText, isDirty, children }, ref) => {
   return (
     <Button
       mt={4}
       colorScheme="orange"
       isLoading={loading}
-      loadingText="Criando conta"
+      loadingText={loadingText}
       type="submit"
       fontSize="1xl"
       fontWeight="medium"

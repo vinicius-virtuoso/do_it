@@ -67,7 +67,11 @@ function FormLogin({ setIsAuth }) {
           errors={errors}
         />
 
-        <ButtonForm loading={loading} isDirty={isDirty}>
+        <ButtonForm
+          loading={loading}
+          loadingText="Entrando..."
+          isDirty={isDirty}
+        >
           Entrar
         </ButtonForm>
       </BoxForm>

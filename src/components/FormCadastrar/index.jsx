@@ -93,7 +93,11 @@ function FormCadastrar() {
           errors={errors}
         />
 
-        <ButtonForm loading={loading} isDirty={isDirty}>
+        <ButtonForm
+          loading={loading}
+          loadingText="Criando conta"
+          isDirty={isDirty}
+        >
           Cadastrar
         </ButtonForm>
       </BoxForm>
