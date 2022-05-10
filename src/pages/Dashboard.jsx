@@ -4,11 +4,10 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import { MyButton } from "../components/Buttons";
 
-const Dashboard = ({ setIsAuth }) => {
+const Dashboard = () => {
   const history = useHistory();
 
   function logout() {
-    setIsAuth(false);
     window.localStorage.clear();
     history.push("/");
   }

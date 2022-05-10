@@ -15,7 +15,7 @@ function Login({ setIsAuth }) {
           bgPosition="center"
           bgSize={["contain"]}
         ></Box>
-        <FormLogin setIsAuth={setIsAuth} />
+        <FormLogin />
       </GrinWrapper>
     </>
   );

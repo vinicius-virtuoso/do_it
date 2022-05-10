@@ -11,7 +11,7 @@ import ControlForm from "../ControlForm";
 import ButtonForm from "../ButtonForm";
 import { ContainerForm, BoxForm } from "../ContainerForm";
 
-function FormLogin({ setIsAuth }) {
+function FormLogin() {
   const [loading, setLoading] = useState(false);
   const history = useHistory();
 
@@ -41,10 +41,9 @@ function FormLogin({ setIsAuth }) {
     console.log(data);
     setLoading(true);
     setTimeout(() => {
-      setIsAuth(true);
       toast.success("Login efetuado com sucesso!", { theme: "dark" });
       history.push("/dashboard");
-      window.localStorage.setItem("Token", true);
+      window.localStorage.setItem("@Doit:Token", true);
     }, 1500);
   };
 

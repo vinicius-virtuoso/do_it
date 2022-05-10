@@ -1,6 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
@@ -27,10 +26,8 @@ const theme = extendTheme({
 ReactDOM.render(
   <React.StrictMode>
     <ChakraProvider theme={theme}>
-      <BrowserRouter>
-        <App />
-        <ToastContainer />
-      </BrowserRouter>
+      <App />
+      <ToastContainer />
     </ChakraProvider>
   </React.StrictMode>,
   document.getElementById("root")
