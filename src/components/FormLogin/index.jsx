@@ -23,7 +23,10 @@ function FormLogin({ setIsAuth }) {
 
   const formSchema = yup.object().shape({
     email: yup.string().email("Email invalido.").required("Digite seu Email."),
-    password: yup.string().required("Digite sua senha."),
+    password: yup
+      .string()
+      .min(8, "Senha contem no mínimo 8 caracteres")
+      .required("Digite sua senha."),
   });
 
   const {

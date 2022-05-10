@@ -19,9 +19,9 @@ export default function Rotas({ isAuth, setIsAuth }) {
       bgGradient="linear-gradient(to-t, #000000 45%, orange.700 100%)"
     >
       <Box maxWidth="1220px" w="100%" height="100%" m="0 auto">
-        <Switch>
+        <>
           {isAuth === false ? (
-            <>
+            <Switch>
               <Route exact path="/">
                 <Home />
               </Route>
@@ -31,18 +31,21 @@ export default function Rotas({ isAuth, setIsAuth }) {
               <Route exact path="/cadastrar">
                 <Cadastrar />
               </Route>
-            </>
+              <Route path="*">
+                <Home />
+              </Route>
+            </Switch>
           ) : (
-            <>
+            <Switch>
               <Route exact path="/dashboard">
                 <Dashboard setIsAuth={setIsAuth} />
               </Route>
-              <Route exact path="/*">
+              <Route exact path="*">
                 <Redirect to="/dashboard" />
               </Route>
-            </>
+            </Switch>
           )}
-        </Switch>
+        </>
       </Box>
     </Flex>
   );
