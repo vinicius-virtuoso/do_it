@@ -1,28 +1,26 @@
-import {
-  Flex,
-  FormErrorMessage,
-  FormLabel,
-  FormControl,
-  Input,
-  Button,
-  Box,
-  Text,
-  Heading,
-} from "@chakra-ui/react";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-import { motion } from "framer-motion";
 import { toast } from "react-toastify";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import ControlForm from "../ControlForm";
+import ButtonForm from "../ButtonForm";
+import LinkForm from "./../LinkForm/index";
+import { BoxForm, ContainerForm } from "../ContainerForm";
 
 function FormCadastrar() {
   const [loading, setLoading] = useState(false);
   const history = useHistory();
+
+  useEffect(() => {
+    return () => {
+      setLoading(false);
+    };
+  }, []);
 
   const formSchema = yup.object().shape({
     name: yup.string().required("Digite seu nome."),
@@ -62,133 +60,47 @@ function FormCadastrar() {
   };
 
   return (
-    <Box maxWidth="400px" w="100%" minH="450px" as={motion.div} m="auto">
-      <Heading
-        as={Link}
-        to="/"
-        d="flex"
-        alignItems="baseline"
-        justifyContent="center"
-        gap={2}
-        textAlign="center"
-        fontSize={["20px", "26px"]}
-        fontWeight="light"
-        letterSpacing={1}
-        w="100%"
-      >
-        Crie sua conta em{" "}
-        <Box as="span" fontSize="42px" fontWeight="bold" color="white">
-          do
-          <Box as="span" color="orange.500">
-            .
-          </Box>
-          it
-        </Box>
-      </Heading>
-      <Flex
-        as="form"
-        flexDirection="column"
-        onSubmit={handleSubmit(formSubmit)}
-        py={[5]}
-        px={[5]}
-        bg="dark"
-        gap={[3]}
-        shadow="dark-lg"
-      >
-        <Box>
-          <FormControl isInvalid={errors.name}>
-            <FormLabel htmlFor="name" fontSize="1xl" letterSpacing={1}>
-              Nome
-            </FormLabel>
-            <Input
-              id="name"
-              {...register("name")}
-              focusBorderColor="orange.500"
-              _hover={{ borderColor: "orange.500" }}
-            />
-            <FormErrorMessage>{errors.name?.message}</FormErrorMessage>
-          </FormControl>
-        </Box>
-        <Box>
-          <FormControl isInvalid={errors.email}>
-            <FormLabel htmlFor="email" fontSize="1xl" letterSpacing={1}>
-              Email
-            </FormLabel>
-            <Input
-              id="email"
-              {...register("email")}
-              focusBorderColor="orange.500"
-              _hover={{ borderColor: "orange.500" }}
-            />
-            <FormErrorMessage>{errors.email?.message}</FormErrorMessage>
-          </FormControl>
-        </Box>
-        <Box>
-          <FormControl isInvalid={errors.password}>
-            <FormLabel htmlFor="password" fontSize="1xl" letterSpacing={1}>
-              Senha
-            </FormLabel>
-            <Input
-              id="password"
-              type="password"
-              {...register("password")}
-              focusBorderColor="orange.500"
-              _hover={{ borderColor: "orange.500" }}
-            />
-            <FormErrorMessage>{errors.password?.message}</FormErrorMessage>
-          </FormControl>
-        </Box>
-        <Box>
-          <FormControl isInvalid={errors.passwordConfirm}>
-            <FormLabel
-              htmlFor="passwordConfirm"
-              fontSize="1xl"
-              letterSpacing={1}
-            >
-              Confirme sua senha
-            </FormLabel>
-            <Input
-              id="passwordConfirm"
-              type="password"
-              {...register("passwordConfirm")}
-              focusBorderColor="orange.500"
-              _hover={{ borderColor: "orange.500" }}
-            />
-            <FormErrorMessage>
-              {errors.passwordConfirm?.message}
-            </FormErrorMessage>
-          </FormControl>
-        </Box>
+    <ContainerForm title="Crie sua conta em">
+      <BoxForm onSubmit={handleSubmit(formSubmit)}>
+        <ControlForm
+          ref="nameCadastrar"
+          label="Nome"
+          id="name"
+          {...register("name")}
+          errors={errors}
+        />
+        <ControlForm
+          ref="emailCadastrar"
+          label="Email"
+          id="email"
+          {...register("email")}
+          errors={errors}
+        />
+        <ControlForm
+          ref="senhaCadastrar"
+          label="Senha"
+          id="password"
+          {...register("password")}
+          errors={errors}
+        />
+        <ControlForm
+          ref="confirmCadastrar"
+          label="Confirme sua senha"
+          id="passwordConfirm"
+          {...register("passwordConfirm")}
+          errors={errors}
+        />
 
-        <Button
-          mt={4}
-          colorScheme="orange"
-          isLoading={loading}
-          loadingText="Criando conta"
-          type="submit"
-          fontSize="1xl"
-          fontWeight="medium"
-          letterSpacing={1}
-          color="white"
-          disabled={!isDirty || loading}
-        >
+        <ButtonForm loading={loading} isDirty={isDirty}>
           Cadastrar
-        </Button>
-      </Flex>
-      <Text
-        textAlign="center"
-        mt={2}
-        d="flex"
-        gap={2}
-        w="100%"
-        justifyContent="center"
-      >
-        Ja tem uma conta?
-        <Box as={Link} to="/login" color="orange.500">
-          Faça seu Login.
-        </Box>
-      </Text>
-    </Box>
+        </ButtonForm>
+      </BoxForm>
+      <LinkForm
+        title="Ja possui uma conta?"
+        pathText="Faça seu Login."
+        path={"/login"}
+      />
+    </ContainerForm>
   );
 }
 

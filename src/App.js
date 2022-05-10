@@ -5,7 +5,7 @@ function App() {
   const [isAuth, setIsAuth] = useState(false);
 
   useEffect(() => {
-    console.log(window.localStorage.getItem("Token"));
+    // console.log(window.localStorage.getItem("Token"));
     if (window.localStorage.getItem("Token") === "true") {
       setIsAuth(true);
     } else {
