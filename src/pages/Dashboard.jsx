@@ -1,11 +1,15 @@
 import { Button, Box, Flex } from "@chakra-ui/react";
 
 import React from "react";
+import { useHistory } from "react-router-dom";
 
 const Dashboard = ({ setIsAuth }) => {
+  const history = useHistory();
+
   function logout() {
     setIsAuth(false);
     window.localStorage.clear();
+    history.push("/");
   }
 
   return (
