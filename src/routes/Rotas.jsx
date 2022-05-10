@@ -31,16 +31,13 @@ export default function Rotas({ isAuth, setIsAuth }) {
               <Route exact path="/cadastrar">
                 <Cadastrar />
               </Route>
-              <Route exact path="*">
-                <Redirect to="/" />
-              </Route>
             </>
           ) : (
             <>
               <Route exact path="/dashboard">
                 <Dashboard setIsAuth={setIsAuth} />
               </Route>
-              <Route exact path="*">
+              <Route exact path="/*">
                 <Redirect to="/dashboard" />
               </Route>
             </>
