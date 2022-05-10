@@ -18,7 +18,7 @@ export default function Rotas({ isAuth, setIsAuth }) {
       justify="center"
       bgGradient="linear-gradient(to-t, #000000 45%, orange.700 100%)"
     >
-      <Box maxWidth="1220px" w="100%" height="100%">
+      <Box maxWidth="1220px" w="100%" height="100%" m="0 auto">
         <Switch>
           {isAuth === false ? (
             <>

@@ -1,4 +1,4 @@
-import { Button, Box } from "@chakra-ui/react";
+import { Button, Box, Flex } from "@chakra-ui/react";
 
 import React from "react";
 
@@ -9,7 +9,7 @@ const Dashboard = ({ setIsAuth }) => {
   }
 
   return (
-    <Box>
+    <Flex alignItems="center" justify="center" flexDir="column">
       <h1>Dashboard</h1>
       <Button
         mt={4}
@@ -23,7 +23,7 @@ const Dashboard = ({ setIsAuth }) => {
       >
         Sair
       </Button>
-    </Box>
+    </Flex>
   );
 };
 
