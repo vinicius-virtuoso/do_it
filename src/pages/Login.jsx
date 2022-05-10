@@ -1,18 +1,13 @@
-import { Flex, Grid, Box } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import React from "react";
 import FormLogin from "../components/FormLogin";
 import ImgTask from "../assets/undraw.svg";
+import { GrinWrapper } from "./../components/GridContainers/index";
 
 function Login({ setIsAuth }) {
   return (
-    <Flex w="100%" align="center" justify="center" p={[4]} minH="100vh">
-      <Grid
-        w="100%"
-        h="100%"
-        align="center"
-        justify="center"
-        gridTemplateColumns={["1fr", "1fr", "1fr", "1fr 1fr"]}
-      >
+    <>
+      <GrinWrapper>
         <Box
           d={["none", "none", "none", "initial"]}
           bgImage={ImgTask}
@@ -21,8 +16,8 @@ function Login({ setIsAuth }) {
           bgSize={["contain"]}
         ></Box>
         <FormLogin setIsAuth={setIsAuth} />
-      </Grid>
-    </Flex>
+      </GrinWrapper>
+    </>
   );
 }
 

@@ -1,7 +1,8 @@
-import { Button, Box, Flex } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 
 import React from "react";
 import { useHistory } from "react-router-dom";
+import { MyButton } from "../components/Buttons";
 
 const Dashboard = ({ setIsAuth }) => {
   const history = useHistory();
@@ -15,18 +16,9 @@ const Dashboard = ({ setIsAuth }) => {
   return (
     <Flex alignItems="center" justify="center" flexDir="column">
       <h1>Dashboard</h1>
-      <Button
-        mt={4}
-        colorScheme="orange"
-        type="submit"
-        fontSize="1xl"
-        fontWeight="medium"
-        letterSpacing={1}
-        color="white"
-        onClick={logout}
-      >
+      <MyButton secondary onClick={logout}>
         Sair
-      </Button>
+      </MyButton>
     </Flex>
   );
 };

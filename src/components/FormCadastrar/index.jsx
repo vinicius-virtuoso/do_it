@@ -80,6 +80,7 @@ function FormCadastrar() {
           ref="senhaCadastrar"
           label="Senha"
           id="password"
+          type="password"
           {...register("password")}
           errors={errors}
         />
@@ -87,6 +88,7 @@ function FormCadastrar() {
           ref="confirmCadastrar"
           label="Confirme sua senha"
           id="passwordConfirm"
+          type="password"
           {...register("passwordConfirm")}
           errors={errors}
         />

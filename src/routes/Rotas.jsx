@@ -14,9 +14,10 @@ export default function Rotas({ isAuth, setIsAuth }) {
       w="100%"
       h="100%"
       minH="100vh"
-      align="center"
-      justify="center"
+      alignItems="center"
+      justifyContent="center"
       bgGradient="linear-gradient(to-t, #000000 45%, orange.700 100%)"
+      px={[2, 0]}
     >
       <Box maxWidth="1220px" w="100%" height="100%" m="0 auto">
         <>
