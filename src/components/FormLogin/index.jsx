@@ -10,6 +10,7 @@ import LinkForm from "../LinkForm";
 import ControlForm from "../ControlForm";
 import ButtonForm from "../ButtonForm";
 import { ContainerForm, BoxForm } from "../ContainerForm";
+import api from "./../../services/api";
 
 function FormLogin() {
   const [loading, setLoading] = useState(false);
@@ -38,13 +39,20 @@ function FormLogin() {
   });
 
   const formSubmit = (data) => {
-    console.log(data);
     setLoading(true);
-    setTimeout(() => {
-      toast.success("Login efetuado com sucesso!", { theme: "dark" });
-      history.push("/dashboard");
-      window.localStorage.setItem("@Doit:Token", true);
-    }, 1500);
+    api
+      .post("/user/login", data)
+      .then((res) => {
+        setLoading(false);
+        toast.success("Login efetuado com sucesso!", { theme: "dark" });
+        localStorage.setItem("@Doit:Token", res.data.token);
+        localStorage.setItem("@Doit:User", JSON.stringify(res.data.user));
+        history.push("/dashboard");
+      })
+      .catch((_) => {
+        toast.error("Email o senha errados. 😓", { theme: "dark" });
+        setLoading(false);
+      });
   };
 
   return (

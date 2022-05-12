@@ -6,7 +6,6 @@ export const GrinWrapper = ({ children }) => {
     <Grid
       w="100%"
       minH="100vh"
-      maxWidth="1400px"
       alignContent="center"
       justifyContent="center"
       gridTemplateColumns={["1fr", "1fr", "1fr", "1fr 1fr"]}

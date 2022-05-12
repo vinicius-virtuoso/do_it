@@ -2,7 +2,7 @@ import React from "react";
 import { Flex, Box } from "@chakra-ui/react";
 
 import { MyButton } from "../Buttons";
-import Logo from "../Logo";
+import { Logo } from "../Logos";
 
 const HomeContent = () => {
   return (

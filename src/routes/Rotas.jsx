@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { Home } from "./../pages/Home";
-import { Flex, Box } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 
 import Cadastrar from "../pages/Cadastrar";
 import Login from "../pages/Login";
@@ -54,18 +54,32 @@ export default function Rotas() {
         alignItems="center"
         justifyContent="center"
         bgGradient="linear-gradient(to-t, #000000 45%, orange.700 100%)"
-        px={[2, 0]}
       >
-        <Box maxWidth="1220px" w="100%" height="100%" m="0 auto">
-          <>
-            <Switch>
-              <Route exact path="/" component={() => <Home />} />
-              <PublicRoute path="/login" component={() => <Login />} />
-              <PublicRoute path="/cadastrar" component={() => <Cadastrar />} />
-              <PrivateRoute path="/dashboard" component={() => <Dashboard />} />
-            </Switch>
-          </>
-        </Box>
+        <>
+          <Switch>
+            <PublicRoute exact path="/" component={() => <Home />} />
+            <PublicRoute exact path="/login" component={() => <Login />} />
+            <PublicRoute
+              exact
+              path="/cadastrar"
+              component={() => <Cadastrar />}
+            />
+            <PrivateRoute
+              exact
+              path="/dashboard"
+              component={() => <Dashboard />}
+            />
+            {!isAuthenticated ? (
+              <Route path="*">
+                <Redirect to="/login" />
+              </Route>
+            ) : (
+              <Route path="*">
+                <Redirect to="/dashboard" />
+              </Route>
+            )}
+          </Switch>
+        </>
       </Flex>
     </BrowserRouter>
   );

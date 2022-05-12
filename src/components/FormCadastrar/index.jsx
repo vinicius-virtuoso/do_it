@@ -11,6 +11,7 @@ import ControlForm from "../ControlForm";
 import ButtonForm from "../ButtonForm";
 import LinkForm from "./../LinkForm/index";
 import { BoxForm, ContainerForm } from "../ContainerForm";
+import api from "./../../services/api";
 
 function FormCadastrar() {
   const [loading, setLoading] = useState(false);
@@ -46,17 +47,22 @@ function FormCadastrar() {
     resolver: yupResolver(formSchema),
   });
 
-  const formSubmit = (data) => {
-    console.log(data);
+  const formSubmit = ({ name, email, password }) => {
+    const user = { name, email, password };
     setLoading(true);
-    setTimeout(() => {
-      toast.success("Conta criada com sucesso!", { theme: "dark" });
-      toast.info("Voce foi redirecionado para pagina de login!", {
-        theme: "dark",
+    api
+      .post("/user/register", user)
+      .then((res) => {
+        setLoading(false);
+        toast.success("Cadastro efetuado com sucesso!", { theme: "dark" });
+        localStorage.setItem("@Doit:Token", res.data.token);
+        localStorage.setItem("@Doit:User", JSON.stringify(res.data.user));
+        history.push("/dashboard");
+      })
+      .catch((_) => {
+        toast.error("Algo deu errado. 😓", { theme: "dark" });
+        setLoading(false);
       });
-      setLoading(false);
-      history.push("/login");
-    }, 1500);
   };
 
   return (

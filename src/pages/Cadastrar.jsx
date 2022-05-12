@@ -3,10 +3,11 @@ import React from "react";
 import FormCadastrar from "../components/FormCadastrar";
 import ImgTask from "../assets/undraw.svg";
 import { GrinWrapper } from "../components/GridContainers";
+import { ContainerContent } from "../components/ContainerContent";
 
 function Cadastrar() {
   return (
-    <>
+    <ContainerContent>
       <GrinWrapper>
         <Box
           d={["none", "none", "none", "initial"]}
@@ -17,7 +18,7 @@ function Cadastrar() {
         ></Box>
         <FormCadastrar />
       </GrinWrapper>
-    </>
+    </ContainerContent>
   );
 }
 

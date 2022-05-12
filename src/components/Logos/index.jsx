@@ -2,14 +2,14 @@ import { Box, Heading } from "@chakra-ui/react";
 import React from "react";
 import { Link } from "react-router-dom";
 
-function Logo() {
+export const Logo = ({ fontSize }) => {
   return (
     <Heading
       as={Link}
       to="/"
       color="white"
       fontWeight="normal"
-      fontSize={["6xl", "9xl"]}
+      fontSize={fontSize ? fontSize : ["7xl", "8xl", "9xl"]}
     >
       do
       <Box as="span" color="orange.500">
@@ -18,6 +18,4 @@ function Logo() {
       it
     </Heading>
   );
-}
-
-export default Logo;
+};

@@ -7,19 +7,25 @@ export const MyButton = ({
   children,
   path,
   onClick,
-  minWidth,
-  maxWidth,
+  minW,
+  maxW,
+  minH,
+  maxH,
   py,
   px,
+  ...props
 }) => {
   const history = useHistory();
 
   if (primary) {
     return (
       <Button
+        boxSize="border-box"
         onClick={onClick ? onClick : () => history.push(path)}
-        minWidth={minWidth ? minWidth : [120, 190, 200]}
-        maxWidth={maxWidth ? maxWidth : [120, 190, 200]}
+        minW={minW ? minW : [120, 120, 190, 200]}
+        maxW={maxW ? maxW : [120, 120, 190, 200]}
+        maxH={maxH ? maxH : [40, 30, "30px"]}
+        minH={minH ? minH : [4, 30, "100%"]}
         colorScheme="orange"
         fontSize={["1xl", "2xl"]}
         fontWeight="medium"
@@ -29,6 +35,7 @@ export const MyButton = ({
         shadow="xl"
         py={py ? py : [2, 4, 7]}
         px={px ? px : [2, 4, 6]}
+        {...props}
       >
         {children}
       </Button>
@@ -36,9 +43,13 @@ export const MyButton = ({
   } else if (secondary) {
     return (
       <Button
+        boxSize="border-box"
         onClick={onClick ? onClick : () => history.push(path)}
-        minWidth={minWidth ? minWidth : [120, 190, 200]}
-        maxWidth={maxWidth ? maxWidth : [120, 190, 200]}
+        h="100%"
+        minW={minW ? minW : [120, 120, 190, 200]}
+        maxW={maxW ? maxW : [120, 120, 190, 200]}
+        maxH={maxH ? maxH : [40, 30, "30px"]}
+        minH={minH ? minH : [4, 30, "100%"]}
         colorScheme="orange"
         fontSize={["1xl", "2xl"]}
         fontWeight="medium"
@@ -49,6 +60,7 @@ export const MyButton = ({
         py={py ? py : [2, 4, 7]}
         px={px ? px : [2, 4, 6]}
         variant="outline"
+        {...props}
       >
         {children}
       </Button>
@@ -56,9 +68,12 @@ export const MyButton = ({
   } else {
     return (
       <Button
+        boxSize="border-box"
         onClick={onClick ? onClick : () => history.push(path)}
-        minWidth={minWidth ? minWidth : [120, 190, 200]}
-        maxWidth={maxWidth ? maxWidth : [120, 190, 200]}
+        minW={minW ? minW : [120, 120, 190, 200]}
+        maxW={maxW ? maxW : [120, 120, 190, 200]}
+        maxH={maxH ? maxH : [40, 30, "30px"]}
+        minH={minH ? minH : [4, 30, "100%"]}
         colorScheme="orange"
         fontSize={["1xl", "2xl"]}
         fontWeight="medium"
@@ -68,6 +83,7 @@ export const MyButton = ({
         shadow="xl"
         py={py ? py : [2, 4, 7]}
         px={px ? px : [2, 4, 6]}
+        {...props}
       >
         {children}
       </Button>

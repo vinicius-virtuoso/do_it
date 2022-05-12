@@ -39,7 +39,7 @@ export const BoxForm = ({ children, onSubmit }) => {
       as="form"
       flexDirection="column"
       onSubmit={onSubmit}
-      py={[5]}
+      py={[8]}
       px={[5]}
       bg="dark"
       gap={[3]}

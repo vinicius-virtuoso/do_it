@@ -14,9 +14,10 @@ const theme = extendTheme({
   },
   colors: {
     gray: {
-      100: "#1A202C",
-      200: "#4A5568",
+      200: "#b5c0d34f",
+      400: "#b5c0d34f",
       800: "#b5c0d3",
+      900: "#111111",
     },
     dark: "#111111",
     opacityColor: "#120d1d9d",
@@ -27,7 +28,7 @@ ReactDOM.render(
   <React.StrictMode>
     <ChakraProvider theme={theme}>
       <App />
-      <ToastContainer />
+      <ToastContainer autoClose={2000} theme="dark" />
     </ChakraProvider>
   </React.StrictMode>,
   document.getElementById("root")

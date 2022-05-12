@@ -1,8 +1,8 @@
 export const isAuthenticated = () => {
   let getToken = window.localStorage.getItem("@Doit:Token");
-  console.log(getToken);
+  let getUser = window.localStorage.getItem("@Doit:User");
 
-  if (getToken) {
+  if (getToken && getUser) {
     return true;
   } else {
     return false;

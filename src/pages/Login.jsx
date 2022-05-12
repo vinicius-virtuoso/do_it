@@ -2,11 +2,12 @@ import { Box } from "@chakra-ui/react";
 import React from "react";
 import FormLogin from "../components/FormLogin";
 import ImgTask from "../assets/undraw.svg";
-import { GrinWrapper } from "./../components/GridContainers/index";
+import { GrinWrapper } from "./../components/GridContainers/";
+import { ContainerContent } from "./../components/ContainerContent";
 
-function Login({ setIsAuth }) {
+function Login() {
   return (
-    <>
+    <ContainerContent>
       <GrinWrapper>
         <Box
           d={["none", "none", "none", "initial"]}
@@ -17,7 +18,7 @@ function Login({ setIsAuth }) {
         ></Box>
         <FormLogin />
       </GrinWrapper>
-    </>
+    </ContainerContent>
   );
 }
 
