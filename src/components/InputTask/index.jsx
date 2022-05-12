@@ -103,7 +103,9 @@ const InputTask = ({ setTasks, token, montageTasks }) => {
             _hover={{ borderColor: "orange.500", borderStart: "0" }}
             {...register("description")}
             onChange={({ target }) =>
-              target.value !== " " ? setDisabled(false) : setDisabled(true)
+              target.value !== " " && target.value !== ""
+                ? setDisabled(false)
+                : setDisabled(true)
             }
           />
         </InputGroup>
